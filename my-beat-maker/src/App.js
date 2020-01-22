@@ -14,16 +14,18 @@ class DrumPad extends React.Component {
   }
 
   handleKeyDown = e => {
-    if (e.keyCode === this.props.letter.charCodeAt())
+    if (e.keyCode === this.props.letter.charCodeAt()) {
       this.audio.play();
-    this.audio.currentTime = 0;
-    this.props.handleDisplay(this.props.id);
+      this.audio.currentTime = 0;
+      this.props.handleDisplay(this.props.id);
+    }
   }
 
   handleClick = () => {
     this.audio.play();
     this.audio.currentTime = 0;
     this.props.handleDisplay(this.props.id);
+
   }
 
   render() {
@@ -31,6 +33,7 @@ class DrumPad extends React.Component {
       <div className="drum-pad"
         id={this.props.id}
         onClick={this.handleClick}
+
       >
         <h3>{this.props.letter}</h3>
         <audio
@@ -48,7 +51,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: 'Let\'s make some music, shall we?'
+      display: 'Let\'s make some music, shall we?',
+      style: ''
     }
   }
 
@@ -71,7 +75,8 @@ class App extends React.Component {
               onClick={this.handleClick}
             />
           ))}
-
+          <p>click on pads or push keys for sound
+          </p>
         </div>
 
       </div>
