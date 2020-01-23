@@ -6,6 +6,21 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
+const colors = ['#CD6155', '#EC7063', '#9B59B6',
+    '#8E44AD', '#2471A3', '#2E86C1', '#148F77', '#229954',
+    '#D4AC0D', '#D68910', '#717D7E', 'lime', 'aqua', 'teal', '#FF00FF'
+];
+
+
+
+
+
+function backgroundChange() {
+    let randomColor = Math.floor(Math.random() * colors.length - 1) + 1;
+    let root = document.getElementById('bg')
+    root.style.backgroundColor = colors[randomColor];
+}
+
 function transformUp(e) {
     const up = -10;
     e.target.style.transform = `translateY(${up}px)`
@@ -23,7 +38,7 @@ test.forEach(pad => {
     })
     pad.addEventListener('mousedown', transformUp)
     pad.addEventListener('mouseup', transformDown)
-
+    pad.addEventListener('click', backgroundChange)
     //pad.addEventListener('keyup', transformDown)
 })
 document.addEventListener('keydown', function (e) {
@@ -44,7 +59,7 @@ document.addEventListener('keyup', function (e) {
     })
 })
 
-
+document.addEventListener('keydown', backgroundChange)
 
 
 // If you want your app to work offline and load faster, you can change
